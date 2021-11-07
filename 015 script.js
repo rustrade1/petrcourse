@@ -79,3 +79,10 @@ if (personalMovieDB.count < 10) {
 }
 
 // Код возьмите из предыдущего домашнего задания
+
+
+let num = '12';
+
+let ee = (parseInt(num));
+
+console.log(typeof(ee));

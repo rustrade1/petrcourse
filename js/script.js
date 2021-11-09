@@ -1,11 +1,51 @@
-const box = document.getElementById('box'),
-      btns = document.getElementsByTagName('button'),
-      circles = document.getElementsByClassName('circle'),
-      hearts = document.querySelectorAll('. heart'),
-      oneHeart = document.querySelector('.heart');
+/* Задания на урок:
 
-// box.style.backgroundColor = 'blue';
-// box.style.width = '500px';
-btns[1].style.borderRadius = '100%';    
+1) Удалить все рекламные блоки со страницы (правая часть сайта)
 
-box.style.cssText = 'background-color: blue; width: 500px';
+2) Изменить жанр фильма, поменять "комедия" на "драма"
+
+3) Изменить задний фон постера с фильмом на изображение "bg.jpg". Оно лежит в папке img.
+Реализовать только при помощи JS
+
+4) Список фильмов на странице сформировать на основании данных из этого JS файла.
+Отсортировать их по алфавиту 
+
+5) Добавить нумерацию выведенных фильмов */
+
+
+
+const movieDB = {
+    movies: [
+        "Логан",
+        "Лига справедливости",
+        "Ла-ла лэнд",
+        "Одержимость",
+        "Скотт Пилигрим против..."
+    ]
+};
+
+// 1) Удалить все рекламные блоки со страницы (правая часть сайта)
+let imgArr = document.querySelectorAll(".promo__adv img");
+imgArr.forEach(item => {
+    item.remove();
+});
+
+// 2) Изменить жанр фильма, поменять "комедия" на "драма"
+
+document.querySelector('.promo__genre').textContent = 'Драма';
+
+// 3) Изменить задний фон постера с фильмом на изображение "bg.jpg". Оно лежит в папке img.
+// Реализовать только при помощи JS
+
+document.querySelector(".promo__bg").style.backgroundImage = 'url(img/bg.jpg)';
+
+// 4) Список фильмов на странице сформировать на основании данных из этого JS файла.
+// Отсортировать их по алфавиту 
+
+let arr = document.querySelectorAll(".promo__interactive-item");
+movieDB.movies.sort();
+for (let i = 0; i < arr.length; i++) {
+    arr[i].textContent = [i + 1] + ' ' + movieDB.movies[i];
+}
+
+// 5) Добавить нумерацию выведенных фильмов */

@@ -37,7 +37,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
     // Timer
-    const deadline = '2021-11-30';
+    const deadline = '2022-11-30';
 
     function getTimeRemaning(endtime) {
         const t = Date.parse(endtime) - Date.parse(new Date()),
@@ -55,7 +55,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     function getZero(num) {
-        if(num >= 0 && num < 10){
+        if (num >= 0 && num < 10) {
             return `0${num}`;
         } else {
             return num;
@@ -86,4 +86,33 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     setClock('.timer', deadline);
 
+    ////////////////Modal
+
+    const modalTrigger = document.querySelectorAll('[data-modal]'),
+        modal = document.querySelector('.modal'),
+        modalCloseBtn = document.querySelector('[data-close]');
+
+    modalTrigger.forEach(btn => {
+        btn.addEventListener('click', () => {
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    function closeModal() {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+    };
+    modalCloseBtn.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+    document.addEventListener('keydown', (e) => {
+        if(e.code === 'Escape') {
+            closeModal();
+        }
+    });
 });
